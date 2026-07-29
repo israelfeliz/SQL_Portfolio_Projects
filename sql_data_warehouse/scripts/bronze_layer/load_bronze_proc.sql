@@ -1,3 +1,49 @@
+/*
+===============================================================================
+Procedure Name : bronze.load_bronze
+Schema         : bronze
+Author         : Israel Feliz
+Created Date   : 2026-07-29
+
+Description:
+    Loads raw data from source CSV files into the Bronze layer of the data
+    warehouse. This procedure performs a full refresh by truncating each
+    Bronze table before importing the latest data from the source systems.
+
+    The procedure executes the following tasks:
+    - Truncates all Bronze tables.
+    - Loads CRM source files using PostgreSQL COPY.
+    - Loads ERP source files using PostgreSQL COPY.
+    - Measures and logs execution time for each table load.
+    - Logs the total execution time for the batch.
+    - Handles unexpected errors and reports diagnostic information.
+
+Source Files:
+    source_crm/cust_info.csv
+    source_crm/prd_info.csv
+    source_crm/sales_details.csv
+    source_erp/LOC_A101.csv
+    source_erp/CUST_AZ12.csv
+    source_erp/PX_CAT_G1V2.csv
+
+Target Tables:
+    bronze.crm_cust_info
+    bronze.crm_prd_info
+    bronze.crm_sales_details
+    bronze.erp_loc
+    bronze.erp_cust
+    bronze.erp_px_cat
+
+Execution:
+    CALL bronze.load_bronze();
+
+Notes:
+    - Designed for full-refresh ETL loads.
+    - No data cleansing or transformations are performed in this layer.
+    - Data is loaded exactly as received from the source systems.
+    - Intended to be executed before the Silver layer load procedure.
+===============================================================================
+*/
 CREATE OR REPLACE PROCEDURE bronze.load_bronze()
 LANGUAGE plpgsql
 AS $$

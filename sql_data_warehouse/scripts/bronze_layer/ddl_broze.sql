@@ -1,11 +1,46 @@
 /*
 ===============================================================================
-DDL Script: Create Bronze Tables
-===============================================================================
-Script Purpose:
-    This script creates tables in the 'bronze' schema, dropping existing tables 
-    if they already exist.
-	  Run this script to re-define the DDL structure of 'bronze' Tables
+Script Name   : bronze_ddl.sql
+Layer         : Bronze
+Schema        : bronze
+Author        : Israel
+Created Date  : 2026-07-29
+
+Description:
+    Creates the Bronze layer tables used in the data warehouse. The Bronze
+    layer stores raw data exactly as received from the source systems without
+    applying any cleansing, validation, or business transformations.
+
+    This script:
+    - Drops existing Bronze tables (if they exist).
+    - Creates the Bronze tables using VARCHAR data types to preserve the
+      original source values.
+    - Serves as the landing area for CRM and ERP source data loaded via the
+      PostgreSQL COPY command.
+
+Source Systems:
+    - CRM
+    - ERP
+
+Tables Created:
+    - bronze.crm_cust_info
+    - bronze.crm_prd_info
+    - bronze.crm_sales_details
+    - bronze.erp_loc
+    - bronze.erp_cust
+    - bronze.erp_px_cat
+
+Notes:
+    - All columns are intentionally defined as VARCHAR to avoid data load
+      failures caused by invalid or inconsistent source values.
+    - Data quality checks, standardization, and type conversions are performed
+      in the Silver layer.
+    - Execute this script before running the Bronze load procedure.
+
+Dependencies:
+    - Schema: bronze
+    - Procedure: bronze.load_bronze()
+
 ===============================================================================
 */
 
