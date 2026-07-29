@@ -120,10 +120,10 @@ BEGIN
     
     start_time := clock_timestamp();
     
-    RAISE NOTICE 'Truncating silver.crm_cust_info';
-    TRUNCATE TABLE silver.crm_cust_info;
+    RAISE NOTICE 'Truncating silver.crm_prd_info';
+    TRUNCATE TABLE silver.crm_prd_info;
 
-    RAISE NOTICE 'Loading silver.crm_cust_info';
+    RAISE NOTICE 'Loading silver.crm_prd_info';
 
 	INSERT INTO silver.crm_prd_info
 	SELECT 
