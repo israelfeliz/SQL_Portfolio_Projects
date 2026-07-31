@@ -80,7 +80,7 @@ BEGIN
 
 	INSERT INTO silver.crm_cust_info
 	SELECT
-	    cst_id,
+	    cst_id::INT,
 	    cst_key,
 	    -- Remove unwanted spaces
 	    TRIM(cst_firstname) AS cst_firstname,
@@ -96,7 +96,7 @@ BEGIN
 		WHEN UPPER(TRIM(cst_gndr)) = 'F' THEN 'Female'
 		ELSE 'Unknown' -- Handling Missing Data
 	    END AS cst_gndr,
-	    cst_create_date
+	    cst_create_date::DATE
 	FROM (
 	    -- Remove duplicates and Null values	
 	    SELECT *,
@@ -127,11 +127,11 @@ BEGIN
 
 	INSERT INTO silver.crm_prd_info
 	SELECT 
-		prd_id,
+		prd_id::INT,
 		REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS prd_cat_id,
 		SUBSTRING(prd_key, 7, LENGTH(prd_key)) AS prd_key,
 		prd_nm,
-		COALESCE(prd_cost, '0') AS prd_cost,
+		COALESCE(prd_cost, '0')::INT AS prd_cost,
 		CASE UPPER(TRIM(prd_line))
 		     WHEN 'M' THEN 'Mounting'
 		     WHEN 'R' THEN 'Road'
@@ -166,7 +166,7 @@ BEGIN
 	SELECT 
 		sls_ord_num,
 		sls_prd_key,
-		sls_cust_id,
+		sls_cust_id::INT,
 		CASE WHEN LENGTH(sls_order_dt) != 8 THEN NULL
 			 ELSE sls_order_dt::DATE
 		END AS sls_order_dt,

@@ -77,7 +77,7 @@ BEGIN
     RAISE NOTICE 'Loading bronze.crm_cust_info';
 
     COPY bronze.crm_cust_info
-    FROM '/home/israel/Zdisk/Projects/sql_data_warehouse/data/source_crm/cust_info.csv'
+    FROM '/home/israel/Zdisk/Projects/SQL_Portfolio_Projects/sql_data_warehouse/data/source_crm/cust_info.csv'
     DELIMITER ','
     CSV HEADER;
 
@@ -95,7 +95,7 @@ BEGIN
     TRUNCATE TABLE bronze.crm_prd_info;
 
     COPY bronze.crm_prd_info
-    FROM '/home/israel/Zdisk/Projects/sql_data_warehouse/data/source_crm/prd_info.csv'
+    FROM '/home/israel/Zdisk/Projects/SQL_Portfolio_Projects/sql_data_warehouse/data/source_crm/prd_info.csv'
     DELIMITER ','
     CSV HEADER;
 
@@ -113,7 +113,7 @@ BEGIN
     TRUNCATE TABLE bronze.crm_sales_details;
 
     COPY bronze.crm_sales_details
-    FROM '/home/israel/Zdisk/Projects/sql_data_warehouse/data/source_crm/sales_details.csv'
+    FROM '/home/israel/Zdisk/Projects/SQL_Portfolio_Projects/sql_data_warehouse/data/source_crm/sales_details.csv'
     DELIMITER ','
     CSV HEADER;
 
@@ -137,7 +137,7 @@ BEGIN
     TRUNCATE TABLE bronze.erp_loc;
 
     COPY bronze.erp_loc
-    FROM '/home/israel/Zdisk/Projects/sql_data_warehouse/data/source_erp/LOC_A101.csv'
+    FROM '/home/israel/Zdisk/Projects/SQL_Portfolio_Projects/sql_data_warehouse/data/source_erp/LOC_A101.csv'
     DELIMITER ','
     CSV HEADER;
 
@@ -155,7 +155,7 @@ BEGIN
     TRUNCATE TABLE bronze.erp_cust;
 
     COPY bronze.erp_cust
-    FROM '/home/israel/Zdisk/Projects/sql_data_warehouse/data/source_erp/CUST_AZ12.csv'
+    FROM '/home/israel/Zdisk/Projects/SQL_Portfolio_Projects/sql_data_warehouse/data/source_erp/CUST_AZ12.csv'
     DELIMITER ','
     CSV HEADER;
 
@@ -173,7 +173,7 @@ BEGIN
     TRUNCATE TABLE bronze.erp_px_cat;
 
     COPY bronze.erp_px_cat
-    FROM '/home/israel/Zdisk/Projects/sql_data_warehouse/data/source_erp/PX_CAT_G1V2.csv'
+    FROM '/home/israel/Zdisk/Projects/SQL_Portfolio_Projects/sql_data_warehouse/data/source_erp/PX_CAT_G1V2.csv'
     DELIMITER ','
     CSV HEADER;
 
